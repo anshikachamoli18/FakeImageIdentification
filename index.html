@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Identification</title>
+    <style>
+        *{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 15px 30px;
+    font-size: 17px;
+    padding: 8px;
+    border: 10px;
+}
+
+.container{
+    background-color: lightgreen;
+    padding: 5px 20px 15px 20px;
+    border: 10px solid green;
+    border-radius: 5px;
+    color: blue;
+    width: 75%;
+    height: 600px;
+    position: relative;
+    top: 25%;
+    left: 12.5%;
+    margin: 30px;
+}
+
+.box{
+    width: 50%;
+    height: 80px;
+    padding: 12px;
+    border: 10px solid green ;
+    border-radius: 5px; 
+    margin: 10px; 
+    color: black;
+    background-color: skyblue;
+    font-size: 30px;
+    position: relative;
+    top: 25%;
+    left: 25%;
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+}
+h2{
+    position: relative;
+    left: 15%;
+    font-size: 50px;
+    color: blue;
+    font-family: 'Times New Roman', Times, serif;
+}
+img
+{
+   position: absolute;
+   top:60%;
+   left:60%;
+}
+p{
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    color: black;
+    position: relative;
+    left: 5%;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Fake Image Identification</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input class="box" type="file" name="file" accept=".jpg, .jpeg, .png" required>
+        <button class ="box"type="submit">Predict</button>
+    </form>
+    {% if result %}
+     <h2>Result: {{ result }}</h2>
+     <p>Realness Percentage: {{ realness_percentage }}%</p>
+     <p>Fakeness Percentage: {{ fakeness_percentage }}%</p>
+     <img src="{{url_for('display_image', filename=image_path)}}" alt="Uploaded Image" width="30%" height="30%">
+    {% endif %}
+    </div>
+</body>
+</html>
