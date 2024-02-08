@@ -56,9 +56,11 @@ def index():
                                    realness_percentage=realness_percentage, fakeness_percentage=fakeness_percentage)
 
     return render_template('index.html', result=None, image_path=None)
-
-
+    
 @app.route('/display_image/<filename>')
 def display_image(filename):
     return send_file(filename, mimetype='image/png')
+
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)
 
